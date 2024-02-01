@@ -1,0 +1,139 @@
+.homebanner {
+  background-image: url("./images/backgroundimg.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  overflow: hidden;
+  display: flex ;
+ align-items: center;
+ justify-content: center;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card {
+  width: 400px !important;
+  
+}
+.text-color {
+  color: black !important;
+  font-size: 13px !important;
+}
+.inputgroup {
+  border-right: none !important;
+
+  width: 20px !important;
+}
+.display
+{
+display: flex !important;
+align-items: center !important;
+justify-content:center !important ;
+}
+.icon {
+  /* background-color:#f5f6fa !important; */
+  cursor: pointer !important;
+  border-top-right-radius: 1rem !important ;
+  border-bottom-right-radius: 1rem !important ;
+}
+.sidebar
+{
+  background-color:#ffffff!important;
+}
+
+.Header
+{
+  background-color: #77b5c4!important;
+}
+.image
+{
+width: 150px !important;
+margin: auto !important;
+}
+.cardsize
+{
+  height:100px !important;
+  width: 100px !important;
+}
+.dashboardimg
+{
+  object-fit: contain !important;
+  height:150px !important;
+  display:flex !important ;
+  align-items:center !important;
+  justify-content: center !important;
+}
+.cardtitle
+{
+  width:15px !important;
+}
+
+.hover:hover
+{
+   background-color:whitesmoke !important;
+  color:#7c70e2!important;
+  border-radius: 5px !important;
+ }
+.navimage
+{
+  width:100px !important;
+}
+a:link { 
+  text-decoration: none; 
+} 
+.cardtitle{
+font-size: 14px !important;
+}
+
+.width{
+  width: 250px !important;
+}
+.imgcard
+{
+  width:150px !important;
+  background-color: #f3f7f9 !important;
+}
+.card-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: var(--ct-card-spacer-y) var(--ct-card-spacer-x);
+  color: var(--ct-card-color);
+  border:0px !important;
+}
+body
+{
+  background-color: #f1f2f4 !important;
+}
+.padding-top
+{
+  padding-top: 1px !important;
+}
+.truncate
+{
+  width: 150px !important;
+}
+.textarea
+{
+  resize: none !important;
+}
+.form
+{
+  color:  #77b5c4 !important;
+  font-style: italic !important;
+  font-weight: bold !important;
+  }
+  .buttoncolor
+  {
+    background-color: #77b5c4 !important;
+  }
+  .btn
+  {
+    width: 120px !important;
+  }
