@@ -3,9 +3,12 @@ import Header from "../layout/Header";
 import Sidebar from "../layout/Sidebar";
 import Button from 'react-bootstrap/Button';
 import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ProductForm=({active,setActive})=>{
 const navigate=useNavigate();
+
+ 
     return(
         <>
          <Header className="Header"/>

@@ -8,7 +8,7 @@ const Header = ()=>{
 
     return(
         <>
-    <Navbar className="Header p-0">
+    <Navbar className="Header p-0 ">
    
     <img className="navimage ms-2" src={logo}></img>
 

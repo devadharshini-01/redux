@@ -18,7 +18,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 .card {
-  width: 400px !important;
+  width: 390px !important;
   
 }
 .text-color {
@@ -77,7 +77,7 @@ margin: auto !important;
 .hover:hover
 {
    background-color:whitesmoke !important;
-  color:#7c70e2!important;
+  color:#dc3545!important;
   border-radius: 5px !important;
  }
 .navimage
@@ -136,4 +136,9 @@ body
   .btn
   {
     width: 120px !important;
+  }
+  button:hover {
+    background-color: lightblue;
+    color: black;
+    cursor: pointer;
   }

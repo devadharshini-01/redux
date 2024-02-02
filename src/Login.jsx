@@ -1,21 +1,35 @@
 import React, { useState } from "react";
-import { Card, Form } from "react-bootstrap";
+import { Card, Form, Toast } from "react-bootstrap";
 
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
-import dmart from "../src/images/dmart.png";
+import { useNavigate,navigate } from "react-router-dom";
 import axios from "axios";
+
+
 const Login = () => {
   const [view, setView] = useState(false);
   const navigate = useNavigate();
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
+    
   });
+  console.log(login);
 const handleLogin=(event)=>{
   setLogin({...login,[event.target.name]:event.target.value})
+}
+const handleSubmit=()=>{
+  axios.post("https://fts-backend.onrender.com/admin/login", login)
+  
+  .then((response)=>{
+
+ localStorage.setItem("accessToken",response.data.accesstoken.accessToken);
+ navigate("/Productlist");
+  })
+
 }
 
     
@@ -24,11 +38,13 @@ const handleLogin=(event)=>{
       <div className="homebanner">
         <Card className="card ">
           <img className="image  " src={require("../src/images/logo-removebg-preview.png")} />
-          <Form className="p-3 ">
+          <Form className="p-2 ">
             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
               <Form.Label>Email </Form.Label>
               <Form.Control 
               type="email" 
+              name="email"
+         
               placeholder="Email" 
               className="p-3"
               onChange={(e) => handleLogin(e)}
@@ -39,6 +55,8 @@ const handleLogin=(event)=>{
               <InputGroup className="mb-3 ">
                 <Form.Control
                   placeholder="Password"
+                  name="password"
+               
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
                   className=" inputgroup p-3"
@@ -75,8 +93,8 @@ const handleLogin=(event)=>{
                 </div>
               </div>
               <Button
-                onClick={() => navigate("/Productlist")}
-                className="mt-4 mx-auto w-75 p-1  text-white display "
+                onClick={() => handleSubmit()}
+                className="mt-2 mx-auto w-75 p-1  text-white display "
               >
                 Sign in
               </Button>
@@ -87,6 +105,7 @@ const handleLogin=(event)=>{
           </Form.Label>
         </Card>
       </div>
+   
     </>
   );
 };
