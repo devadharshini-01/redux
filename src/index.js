@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import Store from './Store';
-
+import Interceptor from './interceptor';
+Interceptor();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   

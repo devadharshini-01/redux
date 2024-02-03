@@ -21,16 +21,30 @@ const Login = () => {
 const handleLogin=(event)=>{
   setLogin({...login,[event.target.name]:event.target.value})
 }
-const handleSubmit=()=>{
-  axios.post("https://fts-backend.onrender.com/admin/login", login)
+
+const handleSubmit = () => {
+  axios
+    .post("https://fts-backend.onrender.com/admin/login", login)
+    .then((response) => {
+      console.log(response.data.accesstoken);
+      localStorage.setItem("accessToken",response.data.accesstoken.accessToken);
   
-  .then((response)=>{
+      
+      localStorage.setItem("refreshToken", JSON.stringify(response.data.refreshtoken));
+      if (response.status === 200) {
+        navigate("/Productlist");
+      }
+    })
 
- localStorage.setItem("accessToken",response.data.accesstoken.accessToken);
- navigate("/Productlist");
-  })
+    .catch((err) => {
+      console.log(err);
+      if (err.status === 400) {
+        navigate("/");
+      }
+    });
 
-}
+};
+
 
     
   return (

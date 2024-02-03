@@ -18,7 +18,7 @@ const Model = ({
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={button1Click}>
+          <Button   variant="secondary" onClick={button1Click}>
             {button1Value}
           </Button>
         </Modal.Footer>
