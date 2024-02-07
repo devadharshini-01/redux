@@ -9,6 +9,7 @@ export const DashboardGetAction = () => async (dispatch) => {
 
   try {
     const { data } = await axios.get(`https://fakestoreapi.com/products`);
+    
 
     await dispatch({
       type:dashboardApiConstants.SUCCESS,

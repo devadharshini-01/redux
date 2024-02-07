@@ -16,12 +16,9 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route
-            path="/Productlist/:id?"
-            element={<Productlist active={active} setActive={setActive} />}
-          />
+         
            <Route
-            path="Productlist"
+            path="/Productlist/:id?"
             element={<Productlist active={active} setActive={setActive} />}
           />
           <Route

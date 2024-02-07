@@ -15,8 +15,8 @@ const ProductDetail = ({ active, setActive }) => {
     image: yup.string().required("Image is a required field"),
     price: yup.number().required("Price is a required field"),
     rating: yup.object().shape({
-    rate: yup.number().required("Rate is a required field"),
-    count: yup.number().required("Count is a required field"),
+      rate: yup.number().required("Rate is a required field"),
+      count: yup.number().required("Count is a required field"),
     }),
   });
 
@@ -26,7 +26,7 @@ const ProductDetail = ({ active, setActive }) => {
         validationSchema={schema}
         onSubmit={(values) => {
           console.log(values, "++++++++");
-          navigate("/productlist");
+          navigate("/Productlist");
         }}
         initialValues={{
           title: "",
@@ -54,130 +54,121 @@ const ProductDetail = ({ active, setActive }) => {
                     </div>
                   </div>
                   <div className="col-10 mt-3 ">
-                    <Form>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label className="h6 form inputfield">
+                        Title:
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="title"
+                        value={values.title}
+                        onChange={handleChange}
+                        isInvalid={!!errors.title}
+                      />
+                      {errors.title && (
+                        <p className="error-message">{errors.title}</p>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="category">
+                      <Form.Label className="inputfield">Category:</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="category"
+                        value={values.category}
+                        onChange={handleChange}
+                        isInvalid={!!errors.category}
+                      />
+                      <p>{errors.category}</p>
+                      <Form.Group className="mb-3" controlId="textarea">
+                        <Form.Label className="inputfield">
+                          Description
+                        </Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          name="description"
+                          value={values.description}
+                          onChange={handleChange}
+                          isInvalid={!!errors.description}
+                        />
+                        <p>{errors.description}</p>
+                      </Form.Group>
                       <Form.Group
                         className="mb-3"
                         controlId="exampleForm.ControlInput1"
                       >
-                        <Form.Label className="h6 form">Title:</Form.Label>
+                        <Form.Label className="inputfield">image:</Form.Label>
                         <Form.Control
                           type="text"
-                          name="title"
-                          value={values.title}
+                          name="image"
+                          value={values.image}
                           onChange={handleChange}
-                          isInvalid={!!errors.title}
+                          isInvalid={!!errors.image}
                         />
-                        {errors.title && (
-                          <p className="error-message">{errors.title}</p>
-                        )}
+                        <p>{errors.image}</p>
                       </Form.Group>
-                      <Form.Group className="mb-3" controlId="category">
-                        <Form.Label className="form">Category:</Form.Label>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput1"
+                      >
+                        <Form.Label className="inputfield">
+                          Price:<small>(in dollars only)</small>
+                        </Form.Label>
                         <Form.Control
-                          type="text"
-                          name="category"
-                          value={values.category}
+                          type="number"
+                          name="price"
+                          value={values.price}
                           onChange={handleChange}
-                          isInvalid={!!errors.category}
+                          isInvalid={!!errors.price}
                         />
-                        <p>{errors.category}</p>
-                        <Form.Group className="mb-3" controlId="textarea">
-                          <Form.Label className="form">Description</Form.Label>
-                          <Form.Control
-                            className="text"
-                            as="textarea"
-                            name="description"
-                            value={values.description}
-                            onChange={handleChange}
-                            isInvalid={!!errors.description}
-                          />
-                          <p>{errors.description}</p>
-                        </Form.Group>
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput1"
-                        >
-                          <Form.Label className="form">image:</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="image"
-                            value={values.image}
-                            onChange={handleChange}
-                            isInvalid={!!errors.image}
-                          />
-                          <p>{errors.image}</p>
-                        </Form.Group>
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput1"
-                        >
-                          <Form.Label className="form">Price:</Form.Label>
-                          <Form.Control
-                            type="number"
-                            name="price"
-                            value={values.price}
-                            onChange={handleChange}
-                            isInvalid={!!errors.price}
-                          />
-                          <p>{errors.price}</p>
-                        </Form.Group>
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput1"
-                        >
-                          <Form.Label className="form">Rating:</Form.Label>
-                          <Row>
-                            <Col>
-                              <Form.Label className="form">rate:</Form.Label>
-                              <Form.Control
-                                className="w-25"
-                                type="number"
-                                name="rating.rate"
-                                value={values.rating.rate}
-                                onChange={handleChange}
-                                isInvalid={!!errors.rating?.rate}
-                              />
-                              <Form.Control.Feedback type="invalid">
-                                {errors.rating?.rate}
-                              </Form.Control.Feedback>
-                            </Col>
-                            <Col>
-                              <Form.Label className="form">count:</Form.Label>
-                              <Form.Control
-                                className="w-25"
-                                type="number"
-                                name="rating.count"
-                                value={values.rating.count}
-                                onChange={handleChange}
-                                isInvalid={!!errors.rating?.count}
-                              />
-                              <Form.Control.Feedback type="invalid">
-                                {errors.rating?.count}
-                              </Form.Control.Feedback>
-                            </Col>
-                          </Row>
-                        </Form.Group>
+                        <p>{errors.price}</p>
                       </Form.Group>
-                      <Row>
-                        <Col>
-                          <div className="   gap-2 d-flex justify-content-sm-end ">
-                            <button
-                              className="  btn p-2 me-md-2 bg-white btn-outline-dark"
-                              onClick={() => navigate("/Productlist")}
-                              type="button"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              className="  col-xs-6 col-sm-6 btn p-2 me-md-2 buttoncolor text-white"
-                              type="submit"
-                            >
-                              Submit
-                            </button>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Form>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput1"
+                      >
+                        <Form.Label className="inputfield">Rating:</Form.Label>
+                        <Row>
+                          <Col>
+                            <Form.Label className="inputfield">
+                              rate:
+                            </Form.Label>
+                            <Form.Control
+                              className="w-25"
+                              type="number"
+                              name="rating.rate"
+                              value={values.rating.rate}
+                              onChange={handleChange}
+                              isInvalid={!!errors.rating?.rate}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                              {errors.rating?.rate}
+                            </Form.Control.Feedback>
+                          </Col>
+                        </Row>
+                      </Form.Group>
+                    </Form.Group>
+                    <Row>
+                      <Col>
+                        <div className="   gap-2 d-flex justify-content-sm-end ">
+                          <button
+                            className="  btn p-2 me-md-2 bg-white btn-outline-dark"
+                            onClick={() => navigate("/Productlist")}
+                            type="button"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            className="  col-xs-6 col-sm-6 btn p-2 me-md-2 buttoncolor text-white"
+                            type="submit"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </Col>
+                    </Row>
                   </div>
                 </Row>
               </div>
