@@ -11,20 +11,21 @@ const Model = ({
  closeButton,
  disabled1,
  disabled2,
+ variant1,
+ variant2,
 }) => {
   return (
     <>
-      <Modal size="lg" show={show} onHide={closeButton}>
+      <Modal size="md" show={show} onHide={closeButton}>
         <Modal.Header closeButton className="header">
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{body}</Modal.Body>
         <Modal.Footer>
-     
-          <Button variant="secondary" onClick={button1Click} disabled={disabled1}>
+          <Button variant={variant1} onClick={button1Click} disabled={disabled1}>
             {button1Value}
           </Button>
-          <Button variant="secondary" onClick={button2Click} disabled={disabled2}>
+          <Button variant={variant2}onClick={button2Click} disabled={disabled2}>
             {button2Value}
           </Button>
         </Modal.Footer>

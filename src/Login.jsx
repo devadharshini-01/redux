@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Form } from "react-bootstrap";
+import { Card,  Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Icon } from "@iconify/react";
@@ -45,13 +45,15 @@ const Login = () => {
         }
       });
   };
-
   return (
     <>
-      <div className="homebanner">
+  
+   
+     <div className="homebanner">
         <Card className="card ">
           <img
-            className="image  "
+            className="image"
+            alt="logo"
             src={require("../src/images/logo-removebg-preview.png")}
           />
           <Form className="p-2 ">
@@ -118,6 +120,10 @@ const Login = () => {
           </Form.Label>
         </Card>
       </div>
+
+
+      
+     
     </>
   );
 };

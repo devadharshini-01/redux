@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { Formik } from "formik";
 import Header from "../layout/Header";
 import Sidebar from "../layout/Sidebar";
+import axios from "axios";
+import { useEffect } from "react";
 
 const ProductDetail = ({ active, setActive }) => {
   const navigate = useNavigate();
@@ -16,16 +18,24 @@ const ProductDetail = ({ active, setActive }) => {
     price: yup.number().required("Price is a required field"),
     rating: yup.object().shape({
       rate: yup.number().required("Rate is a required field"),
-      count: yup.number().required("Count is a required field"),
     }),
   });
+  useEffect(() => {
+    axios
+      .post("https://fakestoreapi.com/products")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.log();
+      });
+  }, []);
 
   return (
     <>
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
-          console.log(values, "++++++++");
           navigate("/Productlist");
         }}
         initialValues={{
@@ -34,7 +44,7 @@ const ProductDetail = ({ active, setActive }) => {
           description: "",
           image: "",
           price: "",
-          rating: { rate: "", count: "" },
+          rating: { rate: "" },
         }}
       >
         {({ handleSubmit, handleChange, values, errors }) => (
@@ -44,7 +54,7 @@ const ProductDetail = ({ active, setActive }) => {
             <Container fluid className="p-0 ">
               <div className="overflow-hidden">
                 <Row>
-                  <div className="col-2 sidebar">
+                  <div className="col-2 sidebar d-none d-sm-none d-md-block d-lg-block">
                     <div className="d-none d-sm-none d-md-block d-lg-block   sidebar vh-100">
                       <Sidebar
                         className="sidebar"
@@ -53,7 +63,7 @@ const ProductDetail = ({ active, setActive }) => {
                       />
                     </div>
                   </div>
-                  <div className="col-10 mt-3 ">
+                  <div className=" col-sm-12 col-md-10 col-lg-10 mt-3 ">
                     <Form.Group
                       className="mb-3"
                       controlId="exampleForm.ControlInput1"
@@ -69,7 +79,7 @@ const ProductDetail = ({ active, setActive }) => {
                         isInvalid={!!errors.title}
                       />
                       {errors.title && (
-                        <p className="error-message">{errors.title}</p>
+                        <p className="error-message formik">{errors.title}</p>
                       )}
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="category">
@@ -81,7 +91,7 @@ const ProductDetail = ({ active, setActive }) => {
                         onChange={handleChange}
                         isInvalid={!!errors.category}
                       />
-                      <p>{errors.category}</p>
+                      <p className="formik">{errors.category}</p>
                       <Form.Group className="mb-3" controlId="textarea">
                         <Form.Label className="inputfield">
                           Description
@@ -93,13 +103,13 @@ const ProductDetail = ({ active, setActive }) => {
                           onChange={handleChange}
                           isInvalid={!!errors.description}
                         />
-                        <p>{errors.description}</p>
+                        <p className="formik">{errors.description}</p>
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
                         controlId="exampleForm.ControlInput1"
                       >
-                        <Form.Label className="inputfield">image:</Form.Label>
+                        <Form.Label className="inputfield">Image:</Form.Label>
                         <Form.Control
                           type="text"
                           name="image"
@@ -107,7 +117,7 @@ const ProductDetail = ({ active, setActive }) => {
                           onChange={handleChange}
                           isInvalid={!!errors.image}
                         />
-                        <p>{errors.image}</p>
+                        <p className="formik">{errors.image}</p>
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
@@ -123,17 +133,16 @@ const ProductDetail = ({ active, setActive }) => {
                           onChange={handleChange}
                           isInvalid={!!errors.price}
                         />
-                        <p>{errors.price}</p>
+                        <p className="formik">{errors.price}</p>
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
                         controlId="exampleForm.ControlInput1"
                       >
-                        <Form.Label className="inputfield">Rating:</Form.Label>
                         <Row>
                           <Col>
                             <Form.Label className="inputfield">
-                              rate:
+                              Rating:
                             </Form.Label>
                             <Form.Control
                               className="w-25"
